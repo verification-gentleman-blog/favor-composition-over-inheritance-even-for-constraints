@@ -17,9 +17,9 @@ cmd = [
     '-uvm', '-define', 'UVM_NO_DEPRECATED', '-uvmhome', 'CDNS-1.2',
     '-incdir', os.path.join(root_dir, 'src/common/sv'),
     os.path.join(root_dir, 'src/common/sv/*.sv'),
-    '-incdir', os.path.join(root_dir, 'submodules/gent_randomization/src/main/sv'),
-    '-incdir', os.path.join(root_dir, 'submodules/gent_randomization/src/main/headers'),
-    os.path.join(root_dir, 'submodules/gent_randomization/src/main/sv/*.sv'),
+    '-incdir', os.path.join(root_dir, 'submodules/constraints/src/main/sv'),
+    '-incdir', os.path.join(root_dir, 'submodules/constraints/src/main/headers'),
+    os.path.join(root_dir, 'submodules/constraints/src/main/sv/*.sv'),
     '-incdir', os.path.join(root_dir, 'src/with_constraints/sv'),
     os.path.join(root_dir, 'src/with_constraints/sv/*.sv'),
     '+UVM_TESTNAME={0}'.format(args.test)

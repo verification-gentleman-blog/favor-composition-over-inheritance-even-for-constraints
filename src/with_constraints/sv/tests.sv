@@ -20,8 +20,8 @@ package tests;
 
   import common::*;
 
-  import gent_randomization::*;
-  `include "gent_randomization_macros.svh"
+  import constraints::*;
+  `include "constraints_macros.svh"
 
   `include "constrained_sequence_item.svh"
   `include "constraints/.includes.svh"

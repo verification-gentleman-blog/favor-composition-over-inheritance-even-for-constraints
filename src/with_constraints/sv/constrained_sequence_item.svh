@@ -21,6 +21,6 @@ class constrained_sequence_item extends sequence_item;
 
 
   `uvm_object_utils(constrained_sequence_item)
-  `gent_randomization_utils(sequence_item)
+  `constraints_utils(sequence_item)
 
 endclass
