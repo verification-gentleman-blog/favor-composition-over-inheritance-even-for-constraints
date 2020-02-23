@@ -1,0 +1,7 @@
+# Xcelium
+*.log
+xcelium.d
+*.key
+*.history
+waves.shm
+.simvision
