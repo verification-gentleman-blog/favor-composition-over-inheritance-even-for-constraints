@@ -14,7 +14,8 @@ args = parser.parse_args()
 
 cmd = [
     'specman',
-    '-p', "load {}".format(os.path.join(root_dir, 'src/with_aop/e', args.test)),
+    '-p', "load {}".format(os.path.join(root_dir, 'src/with_aop/e/environment')),
+    '-p', "load {}".format(os.path.join(root_dir, 'src/with_aop/e/tests', args.test)),
     ]
 
 if args.gui:
