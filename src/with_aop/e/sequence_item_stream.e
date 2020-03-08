@@ -14,27 +14,17 @@
 
 
 <'
-import types;
-import sequence_item;
-import sequence_of_sequence_item;
-import sequence_item_stream;
+extend sequence_of_sequence_item_kind : [STREAM];
 
+extend STREAM sequence_of_sequence_item {
 
-extend sys {
-
-  sequence_driver: sequence_of_sequence_item_driver is instance;
-
-  on sys.any {
-    emit sequence_driver.clock;
-  };
-
-};
-
-
-extend MAIN sequence_of_sequence_item {
-
-  keep count == 1;
-  keep sequence.kind == STREAM;
+    body() @driver.clock is only {
+      for i from 1 to 10 {
+        var item: sequence_item;
+        gen item;
+        print item;
+      };
+    };
 
 };
 '>

@@ -14,27 +14,6 @@
 
 
 <'
-import types;
-import sequence_item;
-import sequence_of_sequence_item;
-import sequence_item_stream;
-
-
-extend sys {
-
-  sequence_driver: sequence_of_sequence_item_driver is instance;
-
-  on sys.any {
-    emit sequence_driver.clock;
-  };
-
-};
-
-
-extend MAIN sequence_of_sequence_item {
-
-  keep count == 1;
-  keep sequence.kind == STREAM;
-
-};
+sequence sequence_of_sequence_item using
+    item = sequence_item;
 '>
