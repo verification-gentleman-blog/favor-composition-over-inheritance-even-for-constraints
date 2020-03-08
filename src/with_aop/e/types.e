@@ -14,15 +14,13 @@
 
 
 <'
-import types;
+type direction_e: [
+  READ,
+  WRITE
+];
 
-
-extend sys {
-
-  run() is also {
-    var direction: direction_e;
-    print direction;
-  };
-
-};
+type sec_mode_e: [
+  SECURE,
+  NONSECURE
+];
 '>
