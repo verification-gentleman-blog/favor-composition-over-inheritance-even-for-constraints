@@ -14,17 +14,11 @@
 
 
 <'
-import types;
-import sequence_item;
+struct sequence_item like any_sequence_item {
 
-
-extend sys {
-
-  run() is also {
-    var seq_item: sequence_item;
-    gen seq_item;
-    print seq_item;
-  };
+  direction: direction_e;
+  address: uint(bits: 32);
+  sec_mode: sec_mode_e;
 
 };
 '>
