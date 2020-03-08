@@ -14,28 +14,15 @@
 
 
 <'
-import types;
-import sequence_item;
-import sequence_of_sequence_item;
-import sequence_item_stream;
-import sequence_objections;
-
-
-extend sys {
-
-  sequence_driver: sequence_of_sequence_item_driver is instance;
-
-  on sys.any {
-    emit sequence_driver.clock;
-  };
-
-};
-
-
 extend MAIN sequence_of_sequence_item {
 
-  keep count == 1;
-  keep sequence.kind == STREAM;
+  pre_body() @sys.any is first {
+    driver.raise_objection(TEST_DONE);
+  };
+
+  post_body() @sys.any is also {
+    driver.drop_objection(TEST_DONE);
+  };
 
 };
 '>
