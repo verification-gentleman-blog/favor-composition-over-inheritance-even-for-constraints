@@ -14,13 +14,20 @@
 
 
 <'
-import environment;
+import types;
+import sequence_item;
+import sequence_of_sequence_item;
+import sequence_item_stream;
+import sequence_objections;
 
 
-extend MAIN sequence_of_sequence_item {
+extend sys {
 
-  keep count == 1;
-  keep sequence.kind == STREAM;
+  sequence_driver: sequence_of_sequence_item_driver is instance;
+
+  on sys.any {
+    emit sequence_driver.clock;
+  };
 
 };
 '>
