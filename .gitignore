@@ -5,3 +5,6 @@ xcelium.d
 *.history
 waves.shm
 .simvision
+
+# Specman
+*.elog
