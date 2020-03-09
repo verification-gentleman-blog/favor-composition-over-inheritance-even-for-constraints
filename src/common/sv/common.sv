@@ -15,6 +15,8 @@
 
 package common;
 
+  timeunit 1ns;
+
   import uvm_pkg::*;
   `include "uvm_macros.svh"
 
