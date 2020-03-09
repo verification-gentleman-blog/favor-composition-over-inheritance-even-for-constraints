@@ -14,6 +14,7 @@ args = parser.parse_args()
 
 cmd = [
     'xrun',
+    '-q',
     '-uvm', '-define', 'UVM_NO_DEPRECATED', '-uvmhome', 'CDNS-1.2',
     '-incdir', os.path.join(root_dir, 'src/common/sv'),
     os.path.join(root_dir, 'src/common/sv/*.sv'),
