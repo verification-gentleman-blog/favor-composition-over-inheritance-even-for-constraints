@@ -14,6 +14,6 @@
 
 
 <'
-import test_legal_writes_to_mapped_addresses;
+import test_all_random;
 import constraints/only_legal_secure_accesses;
 '>
