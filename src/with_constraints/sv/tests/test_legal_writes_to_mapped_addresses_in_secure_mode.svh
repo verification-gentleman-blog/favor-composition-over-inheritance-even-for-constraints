@@ -28,7 +28,7 @@ class test_legal_writes_to_mapped_addresses_in_secure_mode
 
 
   protected virtual function void add_constraints();
-    only_secure_accesses_constraint c = new();
+    only_legal_secure_accesses_constraint c = new();
     super.add_constraints();
     constrained_sequence_item::add_global_constraint(c);
   endfunction
