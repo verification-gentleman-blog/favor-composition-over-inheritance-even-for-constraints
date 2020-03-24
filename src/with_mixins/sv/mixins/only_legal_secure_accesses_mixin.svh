@@ -13,10 +13,11 @@
 // limitations under the License.
 
 
-class only_secure_accesses_mixin #(type T = sequence_item) extends T;
+class only_legal_secure_accesses_mixin #(type T = sequence_item) extends T;
 
-  constraint only_secure_accesses {
+  constraint only_secure_accesses_to_lower_half_of_range {
     sec_mode == SECURE;
+    address[27] == 0;
   }
 
 
@@ -25,11 +26,11 @@ class only_secure_accesses_mixin #(type T = sequence_item) extends T;
   endfunction
 
 
-  `uvm_object_param_utils(only_secure_accesses_mixin #(T))
+  `uvm_object_param_utils(only_legal_secure_accesses_mixin #(T))
 
 
   virtual function string get_name();
-    return $sformatf("only_secure_accesses_mixin #(%s)", super.get_type_name());
+    return $sformatf("only_legal_secure_accesses_mixin #(%s)", super.get_type_name());
   endfunction
 
 endclass

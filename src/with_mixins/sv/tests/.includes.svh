@@ -13,7 +13,7 @@
 // limitations under the License.
 
 
-`include "tests/test_secure_accesses.svh"
+`include "tests/test_legal_secure_accesses.svh"
 `include "tests/test_legal_writes.svh"
 `include "tests/test_mapped_addresses.svh"
 
