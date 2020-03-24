@@ -13,25 +13,19 @@
 // limitations under the License.
 
 
-class only_low_addresses_mixin #(type T = sequence_item) extends T;
+class test_writes_to_mapped_addresses extends test_all_random;
 
-  // Has to be unique across class hierarchy, as constraints are polymorphic. It's easy to overwrite
-  // a constraint and not understand why randomization shows strange results.
-  constraint only_low_addresses {
-    address[31:16] == '0;
-  }
-
-
-  function new(string name = get_type_name());
-    super.new(name);
+  function new(string name, uvm_component parent);
+    super.new(name, parent);
   endfunction
 
 
-  `uvm_object_param_utils(only_low_addresses_mixin #(T))
-
-
-  virtual function string get_name();
-    return $sformatf("only_low_addresses_mixin #(%s)", super.get_type_name());
+  protected virtual function void set_factory_overrides();
+    sequence_item::type_id::set_type_override(
+        only_writes_mixin #(only_mapped_addresses_mixin #(sequence_item))::get_type());
   endfunction
+
+
+  `uvm_component_utils(test_writes_to_mapped_addresses)
 
 endclass

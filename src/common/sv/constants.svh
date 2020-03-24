@@ -1,4 +1,4 @@
-// Copyright 2018 Tudor Timisescu (verificationgentleman.com)
+// Copyright 2020 Tudor Timisescu (verificationgentleman.com)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,20 +13,11 @@
 // limitations under the License.
 
 
-class test_writes_to_low_addresses_in_secure_mode extends test_all_random;
+const bit [31:0] CODE_START_ADDR = 'h0000_0000;
+const bit [31:0] CODE_END_ADDR = 'h0fff_ffff;
 
-  function new(string name, uvm_component parent);
-    super.new(name, parent);
-  endfunction
+const bit [31:0] SRAM_START_ADDR = 'h2000_0000;
+const bit [31:0] SRAM_END_ADDR = 'h2fff_ffff;
 
-
-  protected virtual function void set_factory_overrides();
-    sequence_item::type_id::set_type_override(
-        only_writes_mixin #(only_low_addresses_mixin #(only_secure_accesses_mixin #(sequence_item)))
-            ::get_type());
-  endfunction
-
-
-  `uvm_component_utils(test_writes_to_low_addresses_in_secure_mode)
-
-endclass
+const bit [31:0] PERIPHERAL_START_ADDR = 'h4000_0000;
+const bit [31:0] PERIPHERAL_END_ADDR = 'h5fff_ffff;

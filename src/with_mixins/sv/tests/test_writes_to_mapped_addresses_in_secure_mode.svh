@@ -13,7 +13,7 @@
 // limitations under the License.
 
 
-class test_low_addresses extends test_all_random;
+class test_writes_to_mapped_addresses_in_secure_mode extends test_all_random;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -22,10 +22,11 @@ class test_low_addresses extends test_all_random;
 
   protected virtual function void set_factory_overrides();
     sequence_item::type_id::set_type_override(
-        only_low_addresses_mixin #(sequence_item)::get_type());
+        only_writes_mixin #(only_mapped_addresses_mixin #(only_secure_accesses_mixin #(sequence_item)))
+            ::get_type());
   endfunction
 
 
-  `uvm_component_utils(test_low_addresses)
+  `uvm_component_utils(test_writes_to_mapped_addresses_in_secure_mode)
 
 endclass
