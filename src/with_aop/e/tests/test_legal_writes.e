@@ -15,9 +15,5 @@
 
 <'
 import test_all_random;
-
-
-extend sequence_item {
-  keep direction == WRITE;
-};
+import constraints/only_legal_writes;
 '>

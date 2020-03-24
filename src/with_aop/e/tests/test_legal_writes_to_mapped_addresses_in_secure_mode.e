@@ -14,7 +14,7 @@
 
 
 <'
-import test_writes_to_mapped_addresses;
+import test_legal_writes_to_mapped_addresses;
 
 
 extend sequence_item {
