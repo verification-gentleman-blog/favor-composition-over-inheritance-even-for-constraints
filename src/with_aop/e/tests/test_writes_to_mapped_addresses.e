@@ -14,21 +14,10 @@
 
 
 <'
-import types;
-import sequence_item;
-import sequence_of_sequence_item;
-import sequence_item_stream;
-import sequence_objections;
-import constants;
+import test_mapped_addresses;
 
 
-extend sys {
-
-  sequence_driver: sequence_of_sequence_item_driver is instance;
-
-  on sys.any {
-    emit sequence_driver.clock;
-  };
-
+extend sequence_item {
+  keep direction == WRITE;
 };
 '>

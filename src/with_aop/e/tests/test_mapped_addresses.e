@@ -18,6 +18,8 @@ import test_all_random;
 
 
 extend sequence_item {
-  keep address[31:16] == 0;
+  keep address in [CODE_START_ADDR..CODE_END_ADDR] or
+      address in [SRAM_START_ADDR..SRAM_END_ADDR] or
+      address in [PERIPHERAL_START_ADDR..PERIPHERAL_END_ADDR];
 };
 '>

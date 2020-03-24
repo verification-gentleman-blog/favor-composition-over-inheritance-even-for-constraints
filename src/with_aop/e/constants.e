@@ -14,10 +14,16 @@
 
 
 <'
-import test_writes;
+extend global {
 
+  const !CODE_START_ADDR: uint(bits: 32) = 0x0000_0000;
+  const !CODE_END_ADDR: uint(bits: 32) = 0x0fff_ffff;
 
-extend sequence_item {
-  keep address[31:16] == 0;
+  const !SRAM_START_ADDR: uint(bits: 32) = 0x2000_0000;
+  const !SRAM_END_ADDR: uint(bits: 32) = 0x2fff_ffff;
+
+  const !PERIPHERAL_START_ADDR: uint(bits: 32) = 0x4000_0000;
+  const !PERIPHERAL_END_ADDR: uint(bits: 32) = 0x5fff_ffff;
+
 };
 '>
