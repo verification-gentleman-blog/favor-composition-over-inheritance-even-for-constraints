@@ -14,10 +14,6 @@
 
 
 <'
-import test_mapped_addresses;
-
-
-extend sequence_item {
-  keep direction == WRITE;
-};
+import test_writes;
+import constraints/only_mapped_addresses;
 '>
