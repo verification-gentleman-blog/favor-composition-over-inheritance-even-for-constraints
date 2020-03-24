@@ -1,4 +1,4 @@
-// Copyright 2020 Tudor Timisescu (verificationgentleman.com)
+// Copyright 2018 Tudor Timisescu (verificationgentleman.com)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
 // limitations under the License.
 
 
-<'
-import test_all_random;
+class only_legal_writes_constraint extends abstract_constraint #(sequence_item);
 
+  constraint c {
+    object.direction == sequence_item::WRITE;
+    object.address[1:0] == 0;
+  }
 
-extend sequence_item {
-  keep direction == WRITE;
-};
-'>
+endclass

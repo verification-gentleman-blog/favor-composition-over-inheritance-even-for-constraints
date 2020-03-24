@@ -13,23 +13,26 @@
 // limitations under the License.
 
 
-class only_writes_mixin #(type T = sequence_item) extends T;
+class test_legal_writes_to_mapped_addresses extends test_legal_writes;
 
-  constraint only_writes {
-    direction == WRITE;
-  }
-
-
-  function new(string name = get_type_name());
-    super.new(name);
+  function new(string name, uvm_component parent);
+    super.new(name, parent);
   endfunction
 
 
-  `uvm_object_param_utils(only_writes_mixin #(T))
-
-
-  virtual function string get_name();
-    return $sformatf("only_writes_mixin #(%s)", super.get_type_name());
+  // Could be moved to the base class in a real project
+  protected virtual function void set_factory_overrides();
+    sequence_item::type_id::set_type_override(constrained_sequence_item::get_type());
   endfunction
+
+
+  protected virtual function void add_constraints();
+    only_mapped_addresses_constraint c = new();
+    super.add_constraints();
+    constrained_sequence_item::add_global_constraint(c);
+  endfunction
+
+
+  `uvm_component_utils(test_legal_writes_to_mapped_addresses)
 
 endclass

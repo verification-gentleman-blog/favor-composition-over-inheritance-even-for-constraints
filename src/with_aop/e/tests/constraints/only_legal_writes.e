@@ -1,4 +1,4 @@
-// Copyright 2018 Tudor Timisescu (verificationgentleman.com)
+// Copyright 2020 Tudor Timisescu (verificationgentleman.com)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,19 +13,9 @@
 // limitations under the License.
 
 
-class test_writes extends test_all_random;
-
-  function new(string name, uvm_component parent);
-    super.new(name, parent);
-  endfunction
-
-
-  protected virtual function void set_factory_overrides();
-    sequence_item::type_id::set_type_override(
-        only_writes_mixin #(sequence_item)::get_type());
-  endfunction
-
-
-  `uvm_component_utils(test_writes)
-
-endclass
+<'
+extend sequence_item {
+  keep direction == WRITE;
+  keep address[1:0] == 0;
+};
+'>

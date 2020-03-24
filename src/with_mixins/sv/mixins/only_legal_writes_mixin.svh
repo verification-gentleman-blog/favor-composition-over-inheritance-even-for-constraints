@@ -1,4 +1,4 @@
-// Copyright 2020 Tudor Timisescu (verificationgentleman.com)
+// Copyright 2018 Tudor Timisescu (verificationgentleman.com)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,7 +13,24 @@
 // limitations under the License.
 
 
-<'
-import test_writes;
-import constraints/only_mapped_addresses;
-'>
+class only_legal_writes_mixin #(type T = sequence_item) extends T;
+
+  constraint only_writes_to_aligned_addresses {
+    direction == WRITE;
+    address[1:0] == 0;
+  }
+
+
+  function new(string name = get_type_name());
+    super.new(name);
+  endfunction
+
+
+  `uvm_object_param_utils(only_legal_writes_mixin #(T))
+
+
+  virtual function string get_name();
+    return $sformatf("only_legal_writes_mixin #(%s)", super.get_type_name());
+  endfunction
+
+endclass

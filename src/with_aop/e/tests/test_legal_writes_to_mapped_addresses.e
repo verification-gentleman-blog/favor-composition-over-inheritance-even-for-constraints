@@ -1,4 +1,4 @@
-// Copyright 2018 Tudor Timisescu (verificationgentleman.com)
+// Copyright 2020 Tudor Timisescu (verificationgentleman.com)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,10 +13,7 @@
 // limitations under the License.
 
 
-class only_writes_constraint extends abstract_constraint #(sequence_item);
-
-  constraint only_writes {
-    object.direction == sequence_item::WRITE;
-  }
-
-endclass
+<'
+import test_legal_writes;
+import constraints/only_mapped_addresses;
+'>
