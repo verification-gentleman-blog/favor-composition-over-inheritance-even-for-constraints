@@ -1,4 +1,4 @@
-// Copyright 2018 Tudor Timisescu (verificationgentleman.com)
+// Copyright 2020 Tudor Timisescu (verificationgentleman.com)
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
 // limitations under the License.
 
 
-class only_low_addresses_constraint extends abstract_constraint #(sequence_item);
+<'
+import test_writes_to_mapped_addresses;
 
-  // Name is not important
-  constraint c {
-    object.address[31:16] == '0;
-  }
 
-endclass
+extend sequence_item {
+  keep sec_mode == SECURE;
+};
+'>

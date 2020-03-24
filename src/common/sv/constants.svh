@@ -13,11 +13,11 @@
 // limitations under the License.
 
 
-<'
-import test_all_random;
+const bit [31:0] CODE_START_ADDR = 'h0000_0000;
+const bit [31:0] CODE_END_ADDR = 'h0fff_ffff;
 
+const bit [31:0] SRAM_START_ADDR = 'h2000_0000;
+const bit [31:0] SRAM_END_ADDR = 'h2fff_ffff;
 
-extend sequence_item {
-  keep address[31:16] == 0;
-};
-'>
+const bit [31:0] PERIPHERAL_START_ADDR = 'h4000_0000;
+const bit [31:0] PERIPHERAL_END_ADDR = 'h5fff_ffff;

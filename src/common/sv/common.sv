@@ -27,4 +27,6 @@ package common;
 
   `include "test_all_random.svh"
 
+  `include "constants.svh"
+
 endpackage

@@ -13,26 +13,20 @@
 // limitations under the License.
 
 
-class test_writes_to_low_addresses_in_secure_mode extends test_writes_to_low_addresses;
+class test_writes_to_mapped_addresses_in_secure_mode extends test_all_random;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
   endfunction
 
 
-  // Could be moved to the base class in a real project
   protected virtual function void set_factory_overrides();
-    sequence_item::type_id::set_type_override(constrained_sequence_item::get_type());
+    sequence_item::type_id::set_type_override(
+        only_writes_mixin #(only_mapped_addresses_mixin #(only_secure_accesses_mixin #(sequence_item)))
+            ::get_type());
   endfunction
 
 
-  protected virtual function void add_constraints();
-    only_secure_accesses_constraint c = new();
-    super.add_constraints();
-    constrained_sequence_item::add_global_constraint(c);
-  endfunction
-
-
-  `uvm_component_utils(test_writes_to_low_addresses_in_secure_mode)
+  `uvm_component_utils(test_writes_to_mapped_addresses_in_secure_mode)
 
 endclass

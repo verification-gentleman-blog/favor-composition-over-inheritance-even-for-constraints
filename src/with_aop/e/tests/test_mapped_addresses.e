@@ -14,10 +14,6 @@
 
 
 <'
-import test_writes;
-
-
-extend sequence_item {
-  keep address[31:16] == 0;
-};
+import test_all_random;
+import constraints/only_mapped_addresses;
 '>

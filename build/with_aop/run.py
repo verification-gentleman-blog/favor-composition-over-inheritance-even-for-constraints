@@ -16,6 +16,7 @@ cmd = [
     'specman',
     '-p', "load {}".format(os.path.join(root_dir, 'src/with_aop/e/environment')),
     '-p', "load {}".format(os.path.join(root_dir, 'src/with_aop/e/tests', args.test)),
+    '-c', 'config print -hex',
     ]
 
 if args.gui:

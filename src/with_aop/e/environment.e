@@ -19,6 +19,7 @@ import sequence_item;
 import sequence_of_sequence_item;
 import sequence_item_stream;
 import sequence_objections;
+import constants;
 
 
 extend sys {

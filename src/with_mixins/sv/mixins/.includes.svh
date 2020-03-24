@@ -13,6 +13,6 @@
 // limitations under the License.
 
 
-`include "mixins/only_low_addresses_mixin.svh"
+`include "mixins/only_mapped_addresses_mixin.svh"
 `include "mixins/only_secure_accesses_mixin.svh"
 `include "mixins/only_writes_mixin.svh"

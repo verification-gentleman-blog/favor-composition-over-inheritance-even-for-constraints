@@ -13,6 +13,6 @@
 // limitations under the License.
 
 
-`include "constraints/only_low_addresses_constraint.svh"
+`include "constraints/only_mapped_addresses_constraint.svh"
 `include "constraints/only_secure_accesses_constraint.svh"
 `include "constraints/only_writes_constraint.svh"

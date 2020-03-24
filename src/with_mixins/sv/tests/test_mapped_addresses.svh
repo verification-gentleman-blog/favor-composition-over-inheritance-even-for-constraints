@@ -13,9 +13,19 @@
 // limitations under the License.
 
 
-`include "tests/test_secure_accesses.svh"
-`include "tests/test_writes.svh"
-`include "tests/test_mapped_addresses.svh"
+class test_mapped_addresses extends test_all_random;
 
-`include "tests/test_writes_to_mapped_addresses.svh"
-`include "tests/test_writes_to_mapped_addresses_in_secure_mode.svh"
+  function new(string name, uvm_component parent);
+    super.new(name, parent);
+  endfunction
+
+
+  protected virtual function void set_factory_overrides();
+    sequence_item::type_id::set_type_override(
+        only_mapped_addresses_mixin #(sequence_item)::get_type());
+  endfunction
+
+
+  `uvm_component_utils(test_mapped_addresses)
+
+endclass
