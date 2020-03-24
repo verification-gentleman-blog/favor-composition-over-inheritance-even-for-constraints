@@ -13,9 +13,14 @@
 // limitations under the License.
 
 
-`include "tests/test_secure_accesses.svh"
-`include "tests/test_writes.svh"
-`include "tests/test_mapped_addresses.svh"
+class only_mapped_addresses_constraint extends abstract_constraint #(sequence_item);
 
-`include "tests/test_writes_to_mapped_addresses.svh"
-`include "tests/test_writes_to_mapped_addresses_in_secure_mode.svh"
+  // Name is not important
+  constraint c {
+    object.address inside {
+        [CODE_START_ADDR:CODE_END_ADDR],
+        [SRAM_START_ADDR:SRAM_END_ADDR],
+        [PERIPHERAL_START_ADDR:PERIPHERAL_END_ADDR] };
+  }
+
+endclass
