@@ -15,4 +15,4 @@
 
 `include "constraints/only_mapped_addresses_constraint.svh"
 `include "constraints/only_secure_accesses_constraint.svh"
-`include "constraints/only_writes_constraint.svh"
+`include "constraints/only_legal_writes_constraint.svh"

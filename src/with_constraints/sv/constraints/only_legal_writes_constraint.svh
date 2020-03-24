@@ -13,25 +13,11 @@
 // limitations under the License.
 
 
-class test_writes extends test_all_random;
+class only_legal_writes_constraint extends abstract_constraint #(sequence_item);
 
-  function new(string name, uvm_component parent);
-    super.new(name, parent);
-  endfunction
-
-
-  // Could be moved to the base class in a real project
-  protected virtual function void set_factory_overrides();
-    sequence_item::type_id::set_type_override(constrained_sequence_item::get_type());
-  endfunction
-
-
-  protected virtual function void add_constraints();
-    only_writes_constraint c = new();
-    constrained_sequence_item::add_global_constraint(c);
-  endfunction
-
-
-  `uvm_component_utils(test_writes)
+  constraint c {
+    object.direction == sequence_item::WRITE;
+    object.address[1:0] == 0;
+  }
 
 endclass

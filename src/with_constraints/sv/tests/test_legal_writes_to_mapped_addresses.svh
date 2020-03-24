@@ -13,7 +13,7 @@
 // limitations under the License.
 
 
-class test_writes_to_mapped_addresses_in_secure_mode extends test_writes_to_mapped_addresses;
+class test_legal_writes_to_mapped_addresses extends test_legal_writes;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -27,12 +27,12 @@ class test_writes_to_mapped_addresses_in_secure_mode extends test_writes_to_mapp
 
 
   protected virtual function void add_constraints();
-    only_secure_accesses_constraint c = new();
+    only_mapped_addresses_constraint c = new();
     super.add_constraints();
     constrained_sequence_item::add_global_constraint(c);
   endfunction
 
 
-  `uvm_component_utils(test_writes_to_mapped_addresses_in_secure_mode)
+  `uvm_component_utils(test_legal_writes_to_mapped_addresses)
 
 endclass
