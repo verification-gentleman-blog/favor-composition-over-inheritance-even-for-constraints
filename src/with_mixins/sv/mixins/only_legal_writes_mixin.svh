@@ -13,20 +13,24 @@
 // limitations under the License.
 
 
-class test_writes_to_mapped_addresses_in_secure_mode extends test_all_random;
+class only_legal_writes_mixin #(type T = sequence_item) extends T;
 
-  function new(string name, uvm_component parent);
-    super.new(name, parent);
+  constraint only_writes_to_aligned_addresses {
+    direction == WRITE;
+    address[1:0] == 0;
+  }
+
+
+  function new(string name = get_type_name());
+    super.new(name);
   endfunction
 
 
-  protected virtual function void set_factory_overrides();
-    sequence_item::type_id::set_type_override(
-        only_writes_mixin #(only_mapped_addresses_mixin #(only_secure_accesses_mixin #(sequence_item)))
-            ::get_type());
+  `uvm_object_param_utils(only_legal_writes_mixin #(T))
+
+
+  virtual function string get_name();
+    return $sformatf("only_legal_writes_mixin #(%s)", super.get_type_name());
   endfunction
-
-
-  `uvm_component_utils(test_writes_to_mapped_addresses_in_secure_mode)
 
 endclass

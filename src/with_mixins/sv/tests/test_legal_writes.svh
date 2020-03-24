@@ -13,7 +13,7 @@
 // limitations under the License.
 
 
-class test_writes extends test_all_random;
+class test_legal_writes extends test_all_random;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -22,10 +22,10 @@ class test_writes extends test_all_random;
 
   protected virtual function void set_factory_overrides();
     sequence_item::type_id::set_type_override(
-        only_writes_mixin #(sequence_item)::get_type());
+        only_legal_writes_mixin #(sequence_item)::get_type());
   endfunction
 
 
-  `uvm_component_utils(test_writes)
+  `uvm_component_utils(test_legal_writes)
 
 endclass
