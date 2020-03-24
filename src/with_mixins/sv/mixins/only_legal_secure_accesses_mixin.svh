@@ -13,19 +13,24 @@
 // limitations under the License.
 
 
-class test_secure_accesses extends test_all_random;
+class only_legal_secure_accesses_mixin #(type T = sequence_item) extends T;
 
-  function new(string name, uvm_component parent);
-    super.new(name, parent);
+  constraint only_secure_accesses_to_lower_half_of_range {
+    sec_mode == SECURE;
+    address[27] == 0;
+  }
+
+
+  function new(string name = get_type_name());
+    super.new(name);
   endfunction
 
 
-  protected virtual function void set_factory_overrides();
-    sequence_item::type_id::set_type_override(
-        only_secure_accesses_mixin #(sequence_item)::get_type());
+  `uvm_object_param_utils(only_legal_secure_accesses_mixin #(T))
+
+
+  virtual function string get_name();
+    return $sformatf("only_legal_secure_accesses_mixin #(%s)", super.get_type_name());
   endfunction
-
-
-  `uvm_component_utils(test_secure_accesses)
 
 endclass

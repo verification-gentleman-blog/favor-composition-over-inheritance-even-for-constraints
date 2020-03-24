@@ -13,10 +13,11 @@
 // limitations under the License.
 
 
-class only_secure_accesses_constraint extends abstract_constraint #(sequence_item);
+class only_legal_secure_accesses_constraint extends abstract_constraint #(sequence_item);
 
-  constraint only_secure_accesses {
+  constraint c {
     object.sec_mode == sequence_item::SECURE;
+    object.address[27] == 0;
   }
 
 endclass

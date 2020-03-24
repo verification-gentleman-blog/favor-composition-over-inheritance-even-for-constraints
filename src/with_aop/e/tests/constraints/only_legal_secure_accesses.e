@@ -14,10 +14,8 @@
 
 
 <'
-import test_all_random;
-
-
 extend sequence_item {
   keep sec_mode == SECURE;
+  keep address[27:27] == 0;
 };
 '>
